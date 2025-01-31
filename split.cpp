@@ -20,11 +20,14 @@ void pushBack(Node* in, Node* to);
 
 void split(Node*& in, Node*& odds, Node*& evens)
 {
+  
   if (in == NULL){
+    //std::cout << "in empty" << std::endl;
     return;
   }
+  //std::cout << in -> value << std::endl;
   Node* current = pop(in);
-  if(in->value % 2 == 0){
+  if(current->value % 2 == 0){
     if(evens != NULL){
       pushBack(current, evens);
     }
@@ -38,10 +41,22 @@ void split(Node*& in, Node*& odds, Node*& evens)
       pushBack(current, odds);
     }
     else{
-      evens = current;
-      evens->next= NULL;
+      odds = current;
+      odds->next= NULL;
     }
   }
+  // if(evens != NULL){
+  //    std::cout << evens -> value << std::endl;
+  // }
+  // else{
+  //   std::cout << "evens empty" << std::endl;
+  // }
+  // if(odds != NULL){
+  //   std::cout << odds -> value << std::endl;
+  // }
+  // else{
+  //   std::cout << "odds empty" << std::endl;
+  // }
   split(in, odds, evens);
 
 }
