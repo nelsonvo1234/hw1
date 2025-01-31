@@ -81,7 +81,10 @@ void ULListStr::push_front(const std::string& val){
 void ULListStr::pop_back(){
   tail_->last++;
   if(tail_->first == tail_->last){
-    tail_ = tail_->prev;
+    if(tail_->prev != NULL){
+      tail_ = tail_->prev;
+    }
+    
     delete tail_->next;
   }
   size_--;
@@ -90,7 +93,9 @@ void ULListStr::pop_back(){
 void ULListStr::pop_front(){
   head_->first++;
   if(head_->first == head_->last){
-    head_ = head_->next;
+    if(head_->next != NULL){
+      head_ = head_->next;
+    }
     delete head_->prev;
   }
   size_--;
