@@ -27,16 +27,4 @@ int main(int argc, char* argv[])
   }
   std::cout << "filled in" << std::endl;
   split(in, odd, even);
-  // do{
-  //   std::cout << odd -> value << std::endl;
-  //   Node* temp = odd;
-  //   odd = odd -> next;
-  //   delete temp;
-  // }while(odd != NULL);
-  // do{
-  //   std::cout << even -> value << std::endl;
-  //   Node* temp = even;
-  //   even = even -> next;
-  //   delete temp;
-  // }while(even != NULL);
 }
