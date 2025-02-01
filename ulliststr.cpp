@@ -111,7 +111,7 @@ void ULListStr::pop_front(){
 
 std::string const & ULListStr::back() const{
   if(tail_ != NULL){
-    return tail_->val[tail_->last];
+    return tail_->val[tail_->last - 1];
   }
   return NULL;
 }
