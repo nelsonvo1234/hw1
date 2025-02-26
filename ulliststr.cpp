@@ -1,5 +1,6 @@
 #include <cstddef>
 #include <stdexcept>
+#include <iostream>
 #include "ulliststr.h"
 
 ULListStr::ULListStr()
@@ -79,13 +80,19 @@ void ULListStr::push_front(const std::string& val){
 }
 
 void ULListStr::pop_back(){
-  tail_->last++;
+  tail_->last--;
+  // std::cout << "tail->last: " << tail_->last << std::endl;
+  // std::cout << "tail->first: " << tail_->first << std::endl;
   if(tail_->first == tail_->last){
     if(tail_->prev != NULL){
       tail_ = tail_->prev;
+      delete tail_->next;
+      tail_->next = NULL;
+    }
+    else{
+      delete tail_;
     }
     
-    delete tail_->next;
   }
   size_--;
   if(size_ == 0){
@@ -96,11 +103,18 @@ void ULListStr::pop_back(){
 
 void ULListStr::pop_front(){
   head_->first++;
+  // std::cout << "head->first: " << head_->first << std::endl;
+  // std::cout << "head->first: " << head_->last << std::endl;
   if(head_->first == head_->last){
     if(head_->next != NULL){
       head_ = head_->next;
+      delete head_->prev;
+      head_->prev = NULL;
     }
-    delete head_->prev;
+    else{
+      delete head_;
+    }
+    
   }
   size_--;
   if(size_ == 0){
