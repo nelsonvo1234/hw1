@@ -5,7 +5,6 @@
 
 #include <string>
 #include <vector>
-#include <iostream>
 #include <sstream>
 
 typedef int Seed;
@@ -436,30 +435,35 @@ TEST(ListRemove, SongOfBackAndFront)
 
 	EXPECT_TRUE(checkListContent(&list, {"oldfront", "oldback"}));
 
+  // std::cout << "1" << std::endl;
 	// this should create an empty slot at the front of the list, and the new element can be put there
 	list.pop_front();
 	list.push_front("newfront");
 
 	EXPECT_TRUE(checkListContent(&list, {"newfront", "oldback"}));
 
+  // std::cout << "2" << std::endl;
 	// now, a new element struct should get created at the front
 	list.pop_back();
 	list.push_front("cloudfront");
 
 	EXPECT_TRUE(checkListContent(&list, {"cloudfront", "newfront"}));
-
+  // std::cout << "3" << std::endl;
 	// now, the original head should get deleted
 	list.pop_back();
 
 	EXPECT_TRUE(checkListContent(&list, {"cloudfront"}));
 
+  // std::cout << "4" << std::endl;
 	list.pop_front();
 
 	EXPECT_TRUE(checkListContent(&list, {}));
+  // std::cout << "5" << std::endl;
 
 	list.push_front("newback");
 
 	EXPECT_TRUE(checkListContent(&list, {"newback"}));
+  // std::cout << "6" << std::endl;
 }
 
 
